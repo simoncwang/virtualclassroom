@@ -1,28 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
 
-public class ChangeScenes : MonoBehaviour
-{
-    public string sceneName;
+// public class ChangeScenes : MonoBehaviour
+// {
+//     public string sceneName;
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Next"))
-        {
-            SceneManager.LoadScene(sceneName);
-        }
-    }
+//     void OnTriggerEnter(Collider other)
+//     {
+//         if (other.CompareTag("Next"))
+//         {
+//             SceneManager.LoadScene(sceneName);
+//         }
+//     }
 
-    void Start()
-    {
+//     void Start()
+//     {
         
-    }
+//     }
 
-    void Update()
-    {
+//     void Update()
+//     {
         
-    }
-}
+//     }
+// }
