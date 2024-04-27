@@ -35,7 +35,7 @@ public class ChangeScenes : MonoBehaviour
 
         if (GetButtonPress())
         {
-            // ChangeScene(); // change scene upon button press
+            ChangeScene(); // change scene upon button press
         }
 
         // if (GetButtonRelease())
