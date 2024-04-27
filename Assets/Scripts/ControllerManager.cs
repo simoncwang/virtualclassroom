@@ -87,6 +87,7 @@ public class ControllerManager : MonoBehaviour
 		if( Physics.Raycast( ray, out hit) ) {
 
             Debug.Log(hit.collider.gameObject.name);
+            Debug.Log(operation);
 
             // set end position as hit point for laser
 			endPosition = hit.point;
