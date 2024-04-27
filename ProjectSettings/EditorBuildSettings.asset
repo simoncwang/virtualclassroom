@@ -6,11 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ClassroomInitial.unity
+    guid: 29faf14ae445f9148b59be2ea373ae88
+  - enabled: 1
     path: Assets/Scenes/ClassroomLesson1.unity
     guid: 8e44b87f4fd4a084284f1d2e227087b4
   - enabled: 1
-    path: Assets/Scenes/ClassroomInitial.unity
-    guid: 29faf14ae445f9148b59be2ea373ae88
+    path: Assets/Scenes/ClassroomLesson2.unity
+    guid: 172bbb65f1e81c6448273bf4490b589e
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLesson3.unity
+    guid: fcb4b5382d2658d4fa8c4c8b522fff79
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLesson4.unity
+    guid: d10606f0fe1c1de4694fad799c87c624
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLesson5.unity
+    guid: fd5e2e1c79a302c4ba611c0abbcf1389
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLesson6.unity
+    guid: d8fc0450288e64e4580e0525c938878a
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLesson7.unity
+    guid: 2994111e1b597e94ba603bc5d13949e8
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLesson8.unity
+    guid: a320e0a04c3feff4dbbe1a37afb30021
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5cafa50dbfb699b4ba9e9076ed9329c1, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: e355a3e146339034ca6af89ba5bc8123, type: 2}
