@@ -15,13 +15,28 @@ public class RotateObject : MonoBehaviour
         // laser = GetComponent<LineRenderer>();
     }
 
-    public void rotateObject(GameObject objectToRotate, float sign) {
+    public void rotateObject(GameObject objectToRotate, Vector3 hitPosition) {
+        // NOTE: vector from origin to hit point is just hit position - (0,0,0)
+        Debug.Log(hitPosition);
+
+        // getting angle between hit vector and horizontal axis
+        float newAngle = Vector3.SignedAngle(hitPosition, new Vector3(1,0,0), new Vector3(0,1,0));
+
+        // setting the z rotation of the object to this new angle
+        objectToRotate.transform.eulerAngles = new Vector3(0,0,newAngle);
+
+
         // checking if object is rotatable
-        RotatableObject rotatable = objectToRotate.GetComponent<RotatableObject>();
-        if (rotatable) {
-            // update z rotation of object by this amount
-            objectToRotate.transform.Rotate(0,0,sign*20f*Time.deltaTime,Space.Self);
-        }   
+        // RotatableObject rotatable = objectToRotate.GetComponent<RotatableObject>();
+        // if (rotatable) {
+        //     // update z rotation of object by this amount
+        //     // objectToRotate.transform.Rotate(0,0,sign*20f*Time.deltaTime,Space.Self);
+
+        //     // get vector from pivot point to hit point
+            
+            
+
+        // }   
     }
 
     // public void rotateObject(RaycastHit hit, Vector3 endPosition) {

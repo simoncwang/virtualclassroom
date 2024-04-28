@@ -5,10 +5,17 @@ using UnityEngine;
 public class ControllerManager : MonoBehaviour
 {
     public LineRenderer laserLineRenderer;
+    public GameObject Vector1;
+    public GameObject Vector2;
+    public Material rotateMaterial;
+    public Material scaleMaterial;
+
+
     private float laserWidth = 0.05f;
     private float laserMaxLength = 5f;
     private GameObject leftController;
     private GameObject rightController;
+    private GameObject currentVector;
     
     // Start is called before the first frame update
     void Start()
@@ -22,13 +29,44 @@ public class ControllerManager : MonoBehaviour
         // get references to left and right hand anchors
         leftController = transform.Find("TrackingSpace/LeftHandAnchor").gameObject;
         rightController = transform.Find("TrackingSpace/RightHandAnchor").gameObject;
+
+        // initialize outlines to disabled
+        Vector1.GetComponent<Outline>().enabled = false;
+        Vector2.GetComponent<Outline>().enabled = false;
+
+        // set default vector selection to vector 1
+        currentVector = Vector1;
+        Vector1.GetComponent<Outline>().enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetJoystick();
         GetTriggerPress();
     }
+
+    void GetJoystick() {
+        // getting thumbstick input values
+        var value = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick, OVRInput.Controller.Touch);
+        float xValue = value.x;
+        
+        // checking if thumbstick is pointing left or right
+        if (xValue > 0) {   // highlight vector 1
+            Vector1.GetComponent<Outline>().enabled = true;
+            Vector2.GetComponent<Outline>().enabled = false;
+
+            // update current vector
+            currentVector = Vector1;
+        } else if (xValue < 0) {   // highlight vector 2
+            Vector2.GetComponent<Outline>().enabled = true;
+            Vector1.GetComponent<Outline>().enabled = false;
+
+            // update current vector
+            currentVector = Vector2;
+        }
+    }
+
     void GetTriggerPress() {
         // float rightIndexTriggerValue = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger, OVRInput.Controller.Touch);
         // float leftIndexTriggerValue = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch);
@@ -86,18 +124,17 @@ public class ControllerManager : MonoBehaviour
         // if an object is hit by the raycast
 		if( Physics.Raycast( ray, out hit) ) {
 
-            Debug.Log(hit.collider.gameObject.name);
-            Debug.Log(operation);
-
             // set end position as hit point for laser
 			endPosition = hit.point;
+
+            Debug.Log(operation);
 
             if (operation == "scale") {
                 // attempt to scale the object hit
                 ScaleObject scaleScript = gameObject.GetComponent<ScaleObject>();
                 if (scaleScript != null) {
                     // set color of laser to green
-                    changeColor(laserLineRenderer, Color.green);
+                    changeColor(laserLineRenderer, scaleMaterial);
                     // scaleScript.scaleObject(hit, endPosition);
                 }
             } else if (operation == "rotate") {
@@ -105,38 +142,12 @@ public class ControllerManager : MonoBehaviour
                 RotateObject rotateScript = gameObject.GetComponent<RotateObject>();
                 if (rotateScript != null) {
                     // set color of laser to red
-                    changeColor(laserLineRenderer, Color.red);
-                    // rotateScript.rotateObject(hit, endPosition);
+                    changeColor(laserLineRenderer, rotateMaterial);
+
+                    // rotate the current selected vector
+                    rotateScript.rotateObject(currentVector, endPosition);
                 }
             }
-
-            // // check which object is hit
-            // if (hit.collider.gameObject.name == "RotateCCW") {
-            //     // getting rotation script
-            //     RotateObject rotateScript = gameObject.GetComponent<RotateObject>();
-
-            //     // getting overall parent (the vector parent)
-            //     GameObject parentObject = hit.collider.gameObject.transform.parent.gameObject;
-            //     if (rotateScript != null) {
-            //         rotateScript.rotateObject(parentObject, 1f);
-            //     }
-            // } else if (hit.collider.gameObject.name == "RotateCW") {
-            //     // getting rotation script
-            //     RotateObject rotateScript = gameObject.GetComponent<RotateObject>();
-
-            //     // getting overall parent (the vector parent)
-            //     GameObject parentObject = hit.collider.gameObject.transform.parent.gameObject;
-            //     if (rotateScript != null) {
-            //         rotateScript.rotateObject(parentObject, -1f);
-            //     }
-            // } else {
-            //     ScaleObject scaleScript = gameObject.GetComponent<ScaleObject>();
-            //     if (scaleScript != null) {
-            //         // set color of laser to green
-            //         laserLineRenderer.material.color = Color.green;
-            //         scaleScript.scaleObject(hit, endPosition);
-            //     }
-            // }
 		}
 
         // update start and end of line render
@@ -144,13 +155,7 @@ public class ControllerManager : MonoBehaviour
 		laserLineRenderer.SetPosition( 1, endPosition );
 	}
 
-    private void changeColor(LineRenderer lr, Color newColor) {
-        float alpha = 1.0f;
-        Gradient gradient = new Gradient();
-        gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(newColor, 0.0f), new GradientColorKey(newColor, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-        );
-        lr.colorGradient = gradient;
+    private void changeColor(LineRenderer lr, Material newMaterial) {
+        lr.material = newMaterial;
     }
 }
