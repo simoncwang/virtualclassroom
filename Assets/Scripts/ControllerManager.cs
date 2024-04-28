@@ -85,16 +85,6 @@ public class ControllerManager : MonoBehaviour
         Vector3 leftPosition = leftController.transform.position;
         Vector3 leftDirection = leftController.transform.forward;
 
-        // if (rightIndexTriggerValue > 0f) {
-        //     laserLineRenderer.enabled = true;
-        //     ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength);
-        // } else if (leftIndexTriggerValue > 0f) {
-        //     laserLineRenderer.enabled = true;
-        //     ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength);
-        // } else {
-        //     laserLineRenderer.enabled = false;
-        // }
-
         if (rightIndexTriggerValue > 0f) {   // shoot laser from right hand and SCALE object hit  
             laserLineRenderer.enabled = true;
             ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "scale");
@@ -127,15 +117,13 @@ public class ControllerManager : MonoBehaviour
             // set end position as hit point for laser
 			endPosition = hit.point;
 
-            Debug.Log(operation);
-
             if (operation == "scale") {
                 // attempt to scale the object hit
                 ScaleObject scaleScript = gameObject.GetComponent<ScaleObject>();
                 if (scaleScript != null) {
                     // set color of laser to green
                     changeColor(laserLineRenderer, scaleMaterial);
-                    // scaleScript.scaleObject(hit, endPosition);
+                    scaleScript.scaleObject(currentVector, endPosition);
                 }
             } else if (operation == "rotate") {
                 // attempt to rotate the object hit
