@@ -68,16 +68,17 @@ public class ChangeScenes : MonoBehaviour
                 Debug.Log("hit arrow coordinate : " + hitObject.transform.position);
                 // Debug.Log("offset : " + (hitObject.transform.position - GameObject.Find("Arrow").transform.position)); // zero (!!!)
                 SetRayMaterial(lineRenderer, selectPointerMaterial);
-                RenderRay(transform.position, hitObject.transform.position);
+                // RenderRay(transform.position, hitObject.transform.position);
+                RenderRay(transform.position, transform.position + transform.forward * maxRayDistance);
             } else {
                 SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
-                RenderRay(transform.position, transform.forward * maxRayDistance); // render default (white) ray at all times
+                RenderRay(transform.position, transform.position + transform.forward * maxRayDistance); // render default (white) ray at all times
             }
         } else {
             Debug.Log("Ray hit nothing.");
             Debug.Log("current coordinate : " + transform.forward.normalized * maxRayDistance);
             SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
-            RenderRay(transform.position, transform.forward * maxRayDistance); // render default (white) ray at all times
+            RenderRay(transform.position, transform.position + transform.forward * maxRayDistance); // render default (white) ray at all times
         }
     }
 
