@@ -115,6 +115,8 @@ public class ControllerManager : MonoBehaviour
         // if an object is hit by the raycast
 		if( Physics.Raycast( ray, out hit) ) {
 
+            Debug.Log("simon ray hit" + hit.collider.gameObject.name);
+
             // set end position as hit point for laser
 			endPosition = hit.point;
 

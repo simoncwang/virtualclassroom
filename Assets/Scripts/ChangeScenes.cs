@@ -59,7 +59,7 @@ public class ChangeScenes : MonoBehaviour
         RenderRay(); // render default (white) ray at all times
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward.normalized, out hit, maxRayDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxRayDistance))
         {
             hitObject = hit.collider.gameObject;
             Debug.Log("Ray hit [" + hitObject + "]");

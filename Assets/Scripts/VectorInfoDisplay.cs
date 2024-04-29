@@ -45,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
         "\nGreen vector length: " + vectorTwoLength.ToString("F2") +
         "\nAngle: " + angleRounded.ToString() +
         "\nDot product: " + dotProduct.ToString("F2") +
-        "\nSelected vector: " + selectedVector;
+        "\nSelected vector:\n " + selectedVector;
 
 
 
