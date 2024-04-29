@@ -59,18 +59,19 @@ public class ChangeScenes : MonoBehaviour
         RenderRay(); // render default (white) ray at all times
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxRayDistance))
+        if (Physics.Raycast(transform.position, transform.forward.normalized, out hit, maxRayDistance))
         {
             hitObject = hit.collider.gameObject;
             Debug.Log("Ray hit [" + hitObject + "]");
+            // Debug.Log("hitObject coordinate : " + hitObject.transform.position);
+            // Debug.Log("actual arrow coordinate : " + GameObject.Find("Arrow").transform.position);
             if (hitObject.name.StartsWith("Arrow")) // alternatively, .CompareTag("Next")
             {
                 SetRayMaterial(lineRenderer, selectPointerMaterial);
-            } else {
-                SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
             }
         } else {
             Debug.Log("Ray hit nothing.");
+            SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
         }
     }
 
