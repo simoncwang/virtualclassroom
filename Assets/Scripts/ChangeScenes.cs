@@ -24,16 +24,6 @@ public class ChangeScenes : MonoBehaviour
     void Update()
     {
         CastRay();
-
-        if (GetButtonPress())
-        {
-            ChangeScene(); // change scene upon button press
-        }
-
-        // if (GetButtonRelease())
-        // {
-            
-        // }
     }
 
     bool GetButtonPress()
@@ -70,6 +60,11 @@ public class ChangeScenes : MonoBehaviour
                 SetRayMaterial(lineRenderer, selectPointerMaterial);
                 // RenderRay(transform.position, hitObject.transform.position);
                 RenderRay(transform.position, transform.position + transform.forward * maxRayDistance);
+
+                if (GetButtonPress())
+                {
+                    ChangeScene(); // change scene upon button press
+                }
             } else {
                 SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
                 RenderRay(transform.position, transform.position + transform.forward * maxRayDistance); // render default (white) ray at all times
