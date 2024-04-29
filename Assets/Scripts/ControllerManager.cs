@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
+    // public variables
     public LineRenderer laserLineRenderer;
     public GameObject Vector1;
     public GameObject Vector2;
     public Material rotateMaterial;
     public Material scaleMaterial;
 
-
+    // private variables
     private float laserWidth = 0.05f;
     private float laserMaxLength = 5f;
     private GameObject leftController;
@@ -48,17 +49,17 @@ public class ControllerManager : MonoBehaviour
 
     void GetJoystick() {
         // getting thumbstick input values
-        var value = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick, OVRInput.Controller.Touch);
-        float xValue = value.x;
+        var rightValue = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick, OVRInput.Controller.Touch).x;
+        var leftValue = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.Touch).x;
         
         // checking if thumbstick is pointing left or right
-        if (xValue > 0) {   // highlight vector 1
+        if (rightValue > 0 || leftValue > 0) {   // highlight vector 1
             Vector1.GetComponent<Outline>().enabled = true;
             Vector2.GetComponent<Outline>().enabled = false;
 
             // update current vector
             currentVector = Vector1;
-        } else if (xValue < 0) {   // highlight vector 2
+        } else if (rightValue < 0 || leftValue < 0) {   // highlight vector 2
             Vector2.GetComponent<Outline>().enabled = true;
             Vector1.GetComponent<Outline>().enabled = false;
 
