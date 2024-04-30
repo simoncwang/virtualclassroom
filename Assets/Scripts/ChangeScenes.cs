@@ -24,16 +24,6 @@ public class ChangeScenes : MonoBehaviour
     void Update()
     {
         CastRay();
-
-        if (GetButtonPress())
-        {
-            ChangeScene(); // change scene upon button press
-        }
-
-        // if (GetButtonRelease())
-        // {
-            
-        // }
     }
 
     bool GetButtonPress()
@@ -46,31 +36,44 @@ public class ChangeScenes : MonoBehaviour
         return OVRInput.GetUp(OVRInput.Button.One);
     }
 
-    void RenderRay()
+    void RenderRay(Vector3 start, Vector3 end)
     {
-        // Debug.Log("Controller position: " + transform.position + ", Controller forward: " + transform.forward.normalized);
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.forward * maxRayDistance);
+        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(1, end);
         lineRenderer.enabled = true;
     }
 
     void CastRay()
     {
-        RenderRay(); // render default (white) ray at all times
+        // RenderRay(); // render default (white) ray at all times
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxRayDistance))
+        if (Physics.Raycast(transform.position, transform.forward.normalized, out hit, maxRayDistance))
         {
             hitObject = hit.collider.gameObject;
             Debug.Log("Ray hit [" + hitObject + "]");
             if (hitObject.name.StartsWith("Arrow")) // alternatively, .CompareTag("Next")
             {
+                Debug.Log("current coordinate : " + transform.forward.normalized * maxRayDistance);
+                Debug.Log("hit arrow coordinate : " + hitObject.transform.position);
+                // Debug.Log("offset : " + (hitObject.transform.position - GameObject.Find("Arrow").transform.position)); // zero (!!!)
                 SetRayMaterial(lineRenderer, selectPointerMaterial);
+                // RenderRay(transform.position, hitObject.transform.position);
+                RenderRay(transform.position, transform.position + transform.forward * maxRayDistance);
+
+                if (GetButtonPress())
+                {
+                    ChangeScene(); // change scene upon button press
+                }
             } else {
                 SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
+                RenderRay(transform.position, transform.position + transform.forward * maxRayDistance); // render default (white) ray at all times
             }
         } else {
             Debug.Log("Ray hit nothing.");
+            Debug.Log("current coordinate : " + transform.forward.normalized * maxRayDistance);
+            SetRayMaterial(lineRenderer, defaultPointerMaterial); // change cast ray color back to default color
+            RenderRay(transform.position, transform.position + transform.forward * maxRayDistance); // render default (white) ray at all times
         }
     }
 
