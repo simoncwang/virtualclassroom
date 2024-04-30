@@ -18,7 +18,7 @@ public class RotateObject : MonoBehaviour
         Vector3 localHit = vectorVisualization.transform.InverseTransformPoint(hitPosition);
 
         // getting angle between hit direction and horizontal axis
-        float newAngle = Vector3.SignedAngle(localHit, new Vector3(1,0,0), new Vector3(0,1,0));
+        float newAngle = Vector3.SignedAngle(localHit, new Vector3(1,0,0), new Vector3(0,0,-1));
 
         // setting the z rotation of the object to this new angle
         objectToRotate.transform.eulerAngles = new Vector3(0,0,newAngle);

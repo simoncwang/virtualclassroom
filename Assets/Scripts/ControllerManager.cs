@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControllerManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class ControllerManager : MonoBehaviour
     public GameObject Vector2;
     public Material rotateMaterial;
     public Material scaleMaterial;
+    public Material selectPointerMaterial;
+    public Material defaultPointerMaterial;
+    public string sceneName;
 
     // private variables
     private float laserWidth = 0.05f;
@@ -24,8 +28,8 @@ public class ControllerManager : MonoBehaviour
         // initial parameters for laser line render
         Vector3[] laserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
         laserLineRenderer.SetPositions(laserPositions);
-        laserLineRenderer.startWidth = laserWidth;
-        laserLineRenderer.endWidth = laserWidth;
+        // laserLineRenderer.startWidth = laserWidth;
+        // laserLineRenderer.endWidth = laserWidth;
 
         // get references to left and right hand anchors
         leftController = transform.Find("TrackingSpace/LeftHandAnchor").gameObject;
@@ -98,8 +102,8 @@ public class ControllerManager : MonoBehaviour
         } else if (leftHandTriggerValue > 0f) {   // shoot laser from left hand and ROTATE object hit
             laserLineRenderer.enabled = true;
             ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "rotate");
-        } else {   // if no trigger is pressed do not render a laser
-            laserLineRenderer.enabled = false;
+        } else {   // if no trigger is pressed render default laser
+            ShootLaserFromOrigin(rightPosition, rightDirection, laserMaxLength, "default");
         }
     }
 
@@ -138,6 +142,15 @@ public class ControllerManager : MonoBehaviour
                     // rotate the current selected vector
                     rotateScript.rotateObject(currentVector, endPosition);
                 }
+            } else if (operation == "default") {
+                if (hit.collider.gameObject.name.StartsWith("Arrow")) {
+                    changeColor(laserLineRenderer, selectPointerMaterial);   // change to select color while hitting arrow
+                    if (OVRInput.GetDown(OVRInput.Button.One)) {   // if button pressesd
+                        ChangeScene();
+                    }
+                } else {
+                    changeColor(laserLineRenderer,defaultPointerMaterial);   // change back to default color
+                }
             }
 		}
 
@@ -148,5 +161,12 @@ public class ControllerManager : MonoBehaviour
 
     private void changeColor(LineRenderer lr, Material newMaterial) {
         lr.material = newMaterial;
+    }
+
+    // load next scene
+    void ChangeScene()
+    {
+        Debug.Log("Loading next scene...");
+        SceneManager.LoadScene(sceneName);        
     }
 }
