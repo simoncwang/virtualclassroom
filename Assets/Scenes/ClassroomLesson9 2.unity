@@ -3643,7 +3643,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Find the dot product.\na = 3i + 4j\t\tb = 5i - 2j\na = a<sub>x</sub>i
     + a<sub>y</sub>j\t\tb = b<sub>x</sub>i + b<sub>y</sub>j\na \\u2022 b = a<sub>x</sub>b<sub>x</sub>
-    + a<sub>y</sub>b<sub>y</sub>\n        = 4 (-2) + -7(3)\n        = -8 + -21 =
+    + a<sub>y</sub>b<sub>y</sub>\n        = 4 (-2) + -7 (3)\n        = -8 + -21 =
     -29"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
