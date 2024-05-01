@@ -17,7 +17,6 @@ public class ControllerManager : MonoBehaviour
     private string currSceneName;
 
     // private variables
-    private float laserWidth = 0.05f;
     private float laserMaxLength = 5f;
     private GameObject leftController;
     private GameObject rightController;
@@ -29,8 +28,8 @@ public class ControllerManager : MonoBehaviour
         // initial parameters for laser line render
         Vector3[] laserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
         laserLineRenderer.SetPositions(laserPositions);
-        // laserLineRenderer.startWidth = laserWidth;
-        // laserLineRenderer.endWidth = laserWidth;
+        laserLineRenderer.startWidth = 0.01f;
+        laserLineRenderer.endWidth = 0.05f;
 
         // get references to left and right hand anchors
         leftController = transform.Find("TrackingSpace/LeftHandAnchor").gameObject;
@@ -54,6 +53,7 @@ public class ControllerManager : MonoBehaviour
     {
         GetJoystick();
         GetTriggerPress();
+        Debug.Log("laser enabled: " + laserLineRenderer.enabled);
     }
 
     void GetJoystick() {
@@ -101,16 +101,12 @@ public class ControllerManager : MonoBehaviour
         Vector3 leftDirection = leftController.transform.forward;
 
         if (rightIndexTriggerValue > 0f) {   // shoot laser from right hand and SCALE object hit  
-            laserLineRenderer.enabled = true;
             ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "scale");
         } else if (leftIndexTriggerValue > 0f) {   // shoot laser from left hand and SCALE object hit
-            laserLineRenderer.enabled = true;
             ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "scale");
         } else if (rightHandTriggerValue > 0f) {   // shoot laser from right hand and ROTATE object hit
-            laserLineRenderer.enabled = true;
             ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "rotate");
         } else if (leftHandTriggerValue > 0f) {   // shoot laser from left hand and ROTATE object hit
-            laserLineRenderer.enabled = true;
             ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "rotate");
         } else {   // if no trigger is pressed render default laser
             ShootLaserFromOrigin(rightPosition, rightDirection, laserMaxLength, "default");
