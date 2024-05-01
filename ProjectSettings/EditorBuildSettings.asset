@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ClassroomLesson8.unity
     guid: a320e0a04c3feff4dbbe1a37afb30021
+  - enabled: 1
+    path: Assets/Scenes/ClassroomLessonFinal.unity
+    guid: 62bdaff7ff7fc554fa31b585177b8668
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5cafa50dbfb699b4ba9e9076ed9329c1, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: e355a3e146339034ca6af89ba5bc8123, type: 2}
