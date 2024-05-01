@@ -15,6 +15,7 @@ public class ControllerManager : MonoBehaviour
     public Material defaultPointerMaterial;
     public string nextSceneName;
     private string currSceneName;
+    public GameObject defaultVector;
 
     // private variables
     private float laserMaxLength = 5f;
@@ -43,8 +44,8 @@ public class ControllerManager : MonoBehaviour
             Vector1.GetComponent<Outline>().enabled = false;
             Vector2.GetComponent<Outline>().enabled = false;
 
-            currentVector = Vector1;
-            Vector1.GetComponent<Outline>().enabled = true;
+            currentVector = defaultVector;
+            currentVector.GetComponent<Outline>().enabled = true;
         }
     }
 
