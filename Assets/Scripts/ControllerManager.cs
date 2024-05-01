@@ -13,7 +13,8 @@ public class ControllerManager : MonoBehaviour
     public Material scaleMaterial;
     public Material selectPointerMaterial;
     public Material defaultPointerMaterial;
-    public string sceneName;
+    public string nextSceneName;
+    private string currSceneName;
 
     // private variables
     private float laserWidth = 0.05f;
@@ -35,13 +36,17 @@ public class ControllerManager : MonoBehaviour
         leftController = transform.Find("TrackingSpace/LeftHandAnchor").gameObject;
         rightController = transform.Find("TrackingSpace/RightHandAnchor").gameObject;
 
-        // initialize outlines to disabled
-        Vector1.GetComponent<Outline>().enabled = false;
-        Vector2.GetComponent<Outline>().enabled = false;
-
         // set default vector selection to vector 1
-        currentVector = Vector1;
-        Vector1.GetComponent<Outline>().enabled = true;
+        currSceneName = SceneManager.GetActiveScene().name;
+        if ((currSceneName != "ClassroomInitial") && (currSceneName != "ClassroomLesson8To9") && (currSceneName != "ClassroomLessonFinal"))
+        {
+            // initialize outlines to disabled
+            Vector1.GetComponent<Outline>().enabled = false;
+            Vector2.GetComponent<Outline>().enabled = false;
+
+            currentVector = Vector1;
+            Vector1.GetComponent<Outline>().enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -70,6 +75,11 @@ public class ControllerManager : MonoBehaviour
             // update current vector
             currentVector = Vector2;
         }
+    }
+
+    bool GetButtonPress()
+    {
+        return OVRInput.GetDown(OVRInput.Button.One);
     }
 
     void GetTriggerPress() {
@@ -119,8 +129,6 @@ public class ControllerManager : MonoBehaviour
         // if an object is hit by the raycast
 		if( Physics.Raycast( ray, out hit) ) {
 
-            Debug.Log("simon ray hit" + hit.collider.gameObject.name);
-
             // set end position as hit point for laser
 			endPosition = hit.point;
 
@@ -145,11 +153,17 @@ public class ControllerManager : MonoBehaviour
             } else if (operation == "default") {
                 if (hit.collider.gameObject.name.StartsWith("Arrow")) {
                     changeColor(laserLineRenderer, selectPointerMaterial);   // change to select color while hitting arrow
-                    if (OVRInput.GetDown(OVRInput.Button.One)) {   // if button pressesd
+                    if (GetButtonPress()) {   // if button pressesd
                         ChangeScene();
                     }
                 } else {
-                    changeColor(laserLineRenderer,defaultPointerMaterial);   // change back to default color
+                    changeColor(laserLineRenderer, defaultPointerMaterial);   // change back to default color
+                    if (GetButtonPress()) //  && (nextSceneName.StartsWith("ClassroomLesson9") || nextSceneName.StartsWith("ClassroomLesson10") || nextSceneName.StartsWith("ClassroomLesson11"))
+                    {
+                        // Debug.Log("Current scene : " + currSceneName);
+                        Debug.Log("Loading next scene...");
+                        SceneManager.LoadScene(nextSceneName);
+                    }
                 }
             }
 		}
@@ -167,6 +181,6 @@ public class ControllerManager : MonoBehaviour
     void ChangeScene()
     {
         Debug.Log("Loading next scene...");
-        SceneManager.LoadScene(sceneName);        
+        SceneManager.LoadScene(nextSceneName);        
     }
 }
