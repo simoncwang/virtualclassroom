@@ -784,7 +784,7 @@ MonoBehaviour:
   scaleMaterial: {fileID: 2100000, guid: a1c25e8e73c7f8f42a98e91dd31d27d8, type: 2}
   selectPointerMaterial: {fileID: 2100000, guid: 70da0781a7807bb44831eb1a089cd7b4, type: 2}
   defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
-  sceneName: ClassroomLesson11 4
+  nextSceneName: ClassroomLesson11 4
 --- !u!114 &206520667
 MonoBehaviour:
   m_ObjectHideFlags: 0

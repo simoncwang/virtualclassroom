@@ -3294,9 +3294,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Whenever we take the dot product of two arrows, we will always get the
-    same answer regardless of which of the two arrows we refer to as the first arrow,
-    and which of the two arrows we refer to as the second arrow.
+  m_text: "Find the magnitude of each vector.\na = 3i + 4j\n|a| = sqrt(a<sub>x</sub><sup>2</sup>
+    + a<sub>y</sub><sup>2</sup>)\n|a| = sqrt(3<sup>2</sup> + 4<sup>2</sup>) = sqrt(9
+    + 16) = sqrt(25)\n\t\t\t\t\t= 5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3335,7 +3335,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -4606,7 +4606,7 @@ MonoBehaviour:
   scaleMaterial: {fileID: 2100000, guid: a1c25e8e73c7f8f42a98e91dd31d27d8, type: 2}
   selectPointerMaterial: {fileID: 2100000, guid: 70da0781a7807bb44831eb1a089cd7b4, type: 2}
   defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
-  sceneName: ClassroomLesson10 3
+  nextSceneName: ClassroomLesson10 3
 --- !u!114 &1983269871
 MonoBehaviour:
   m_ObjectHideFlags: 0

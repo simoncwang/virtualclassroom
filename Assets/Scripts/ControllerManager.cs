@@ -13,7 +13,7 @@ public class ControllerManager : MonoBehaviour
     public Material scaleMaterial;
     public Material selectPointerMaterial;
     public Material defaultPointerMaterial;
-    public string sceneName;
+    public string nextSceneName;
     private string currSceneName;
 
     // private variables
@@ -152,16 +152,17 @@ public class ControllerManager : MonoBehaviour
                 }
             } else if (operation == "default") {
                 if (hit.collider.gameObject.name.StartsWith("Arrow")) {
-                    Debug.Log("Default..." + sceneName);
                     changeColor(laserLineRenderer, selectPointerMaterial);   // change to select color while hitting arrow
                     if (GetButtonPress()) {   // if button pressesd
                         ChangeScene();
                     }
                 } else {
                     changeColor(laserLineRenderer, defaultPointerMaterial);   // change back to default color
-                    if (GetButtonPress()) //  && (sceneName.StartsWith("ClassroomLesson9") || sceneName.StartsWith("ClassroomLesson10") || sceneName.StartsWith("ClassroomLesson11"))
+                    if (GetButtonPress()) //  && (nextSceneName.StartsWith("ClassroomLesson9") || nextSceneName.StartsWith("ClassroomLesson10") || nextSceneName.StartsWith("ClassroomLesson11"))
                     {
-                        Debug.Log("Scene name : " + sceneName);
+                        // Debug.Log("Current scene : " + currSceneName);
+                        Debug.Log("Loading next scene...");
+                        SceneManager.LoadScene(nextSceneName);
                     }
                 }
             }
@@ -180,6 +181,6 @@ public class ControllerManager : MonoBehaviour
     void ChangeScene()
     {
         Debug.Log("Loading next scene...");
-        SceneManager.LoadScene(sceneName);        
+        SceneManager.LoadScene(nextSceneName);        
     }
 }
