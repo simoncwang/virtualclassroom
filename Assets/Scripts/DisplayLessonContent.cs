@@ -27,7 +27,7 @@ public class DrawText : MonoBehaviour
                                     "a = ai + 4j		b = 5i - 4j",
                                     "a \u2022 b = |a| |b|",
                                     "	=",
-                                    "=			=	     =",
+                                    "=",
                                     ""};
 
     private float[] durations; // numerical tutorial video durations
@@ -308,6 +308,7 @@ public class DrawText : MonoBehaviour
                     denominator5TMP.text = denominator5TMP.text; // FIXME: 
                     denominator5TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip+1]);
+                    mainlessonContentTMP.text += "			=";
                     numerator4TMP.text = numerator4TMP.text; // FIXME: 
                     numerator4TMP.enabled = true;
                     fraction4.SetActive(true);
@@ -315,6 +316,7 @@ public class DrawText : MonoBehaviour
                     denominator6TMP.enabled = true;
                     sqrt1.SetActive(true);
                     yield return new WaitForSeconds(durations[i+skip+2]);
+                    mainlessonContentTMP.text += "	     =";
                     cos2.SetActive(true);
                     theta2.SetActive(true);
                     yield return new WaitForSeconds(durations[i+skip+3]);
@@ -332,7 +334,7 @@ public class DrawText : MonoBehaviour
                     numerator5TMP.enabled = true;
                     fraction5.SetActive(true);
                     sqrt2.SetActive(true);
-                    denominator7TMP.text = denominator7TMP.text;
+                    denominator7TMP.text = denominator7TMP.text; // FIXME: 
                     denominator7TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip+2]);
                     line5TMP.text += "\n" + line5_text[1];
