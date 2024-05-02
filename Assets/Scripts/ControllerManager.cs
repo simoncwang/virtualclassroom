@@ -38,7 +38,7 @@ public class ControllerManager : MonoBehaviour
 
         // set default vector selection to vector 1
         currSceneName = SceneManager.GetActiveScene().name;
-        if ((currSceneName != "ClassroomInitial") && (currSceneName != "ClassroomLesson8To9") && (currSceneName != "ClassroomLessonFinal"))
+        if ((currSceneName != "ClassroomInitial") && (currSceneName != "ClassroomLesson8To9") && (currSceneName != "ClassroomLessonFinal") && (currSceneName != "LessonAnimationTest"))
         {
             // initialize outlines to disabled
             Vector1.GetComponent<Outline>().enabled = false;

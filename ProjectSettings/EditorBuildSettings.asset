@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ClassroomLesson9 2.unity
     guid: 03654e22ee815994faa8fa2172b1d8ef
   - enabled: 1
-    path: Assets/Scenes/ClassroomLesson9 3.unity
+    path: Assets/Scenes/LessonAnimationTest.unity
     guid: 02ff8dfab4d5f714f8fd29871def7efa
   - enabled: 1
     path: Assets/Scenes/ClassroomLesson9 4.unity
