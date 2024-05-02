@@ -9,7 +9,12 @@ public class FollowVectorRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // setting the line's rotation to the same as the vector
-        transform.eulerAngles = new Vector3(0,0,vector.transform.eulerAngles.z + 90);
+        Vector3 newAngle = Vector3.zero;
+        if (gameObject.name == "Line") {
+            newAngle = new Vector3(0,0,vector.transform.eulerAngles.z + 90);
+        } else {
+            newAngle = new Vector3(0,0,vector.transform.eulerAngles.z);
+        }
+        transform.eulerAngles = newAngle;
     }
 }

@@ -25,7 +25,7 @@ public class ScaleAnimation : MonoBehaviour
         }
 
         // update scale (multiply time by factor to control speed)
-        Vector3 newScale = new Vector3(0.5f*Mathf.Sin(Time.time*0.5f) + 1f, 1, 1);
+        Vector3 newScale = new Vector3(0.25f*Mathf.Sin(Time.time*0.5f) + 1.25f, 1, 1);
         transform.localScale = newScale;
 
     }
