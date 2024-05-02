@@ -36,8 +36,15 @@ public class DrawText : MonoBehaviour
     private GameObject cos;
     private GameObject theta;
     private GameObject numerator1;
+    private TMP_Text numerator1TMP;
     private GameObject numerator2;
+    private TMP_Text numerator2TMP;
     private GameObject denominator1;
+    private TMP_Text denominator1TMP;
+    private GameObject denominator2;
+    private TMP_Text denominator2TMP;
+    private GameObject denominator3;
+    private TMP_Text denominator3TMP;
     private GameObject fraction1;
     private GameObject fraction2;
     private GameObject sqrt1;
@@ -76,28 +83,40 @@ public class DrawText : MonoBehaviour
 
         } else if (demo == "demo3") {          
 
+            // line 2
             cos = GameObject.Find("cos"); // checked: not null
             cos.SetActive(false);
             theta = GameObject.Find("theta");
             theta.SetActive(false);
-            numerator1 = GameObject.Find("TMP (numerator1)");
+
+            // line 3
+            numerator1 = GameObject.Find("TMP_numerator1");
+            numerator1TMP = numerator1.GetComponent<TMP_Text>();
+            // Debug.LogError("[numerator1TMP] " + numerator1TMP.text); // outputs string text
             numerator1.SetActive(false);
-            numerator2 = GameObject.Find("TMP (numerator2)");
-            numerator2.SetActive(false);            
             fraction1 = GameObject.Find("fraction1");
             fraction1.SetActive(false);
-            denominator1 = GameObject.Find("TMP (denominator1)");
-            denominator1.SetActive(false);
-            fraction1 = GameObject.Find("fraction1");
-            fraction1.SetActive(false);
+            denominator1 = GameObject.Find("TMP_denominator1");
+            denominator1TMP = denominator1.GetComponent<TMP_Text>();
+            denominator1TMP.enabled = false;
+
+            numerator2 = GameObject.Find("TMP_numerator2");
+            numerator2TMP = numerator2.GetComponent<TMP_Text>();
+            numerator2TMP.enabled = false;
             fraction2 = GameObject.Find("fraction2");
             fraction2.SetActive(false);
             sqrt_long1 = GameObject.Find("square_root_long1");
             sqrt_long1.SetActive(false);
+            denominator2 = GameObject.Find("TMP_denominator2");
+            denominator2TMP = denominator2.GetComponent<TMP_Text>();
+            denominator2TMP.enabled = false;            
             sqrt_long2 = GameObject.Find("square_root_long2");
             sqrt_long2.SetActive(false);
+            denominator3 = GameObject.Find("TMP_denominator3");
+            denominator3TMP = denominator3.GetComponent<TMP_Text>();
+            denominator3TMP.enabled = false;
 
-            line3Content = new GameObject[] {numerator1, fraction1, denominator1, numerator2, fraction2, sqrt_long1, sqrt_long2};
+            // line3Content = new GameObject[] {numerator1, fraction1, denominator1, numerator2, fraction2, sqrt_long1, sqrt_long2};
 
             // not sure why I couldn't initialize the arrays here...
             lines = demo3_text;
@@ -108,7 +127,6 @@ public class DrawText : MonoBehaviour
         } else {
             Debug.LogError("Please specify \'demo1\', \'demo2\', or \'demo3\' in the Inspector window.");
         }
-
         StartCoroutine(AnimateLessonContent());
     }
 
@@ -158,11 +176,13 @@ public class DrawText : MonoBehaviour
                     mainlessonContentTMP.text += "\n" + lines[i];
                     yield return new WaitForSeconds(durations[i]);                    
                 } else if (i == 3) {
-                    for (int j = 0; j < durations.Length - lines.Length; j++)
-                    {
-                        line3Content[j].SetActive(true);
-                        yield return new WaitForSeconds(durations[lines.Length + j]);
-                    }
+                    // for (int j = 0; j < durations.Length - lines.Length; j++)
+                    // {
+                    //     line3Content[j].SetActive(true);
+                    //     yield return new WaitForSeconds(durations[lines.Length + j]);
+                    // }
+                } else if (i == 4) {
+
                 } else {
                     mainlessonContentTMP.text += "\n" + lines[i];
                     yield return new WaitForSeconds(durations[i]);
