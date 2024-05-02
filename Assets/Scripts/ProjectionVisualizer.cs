@@ -6,7 +6,6 @@ public class ProjectionVisualizer : MonoBehaviour
 {
     public GameObject vectorOne;
     public GameObject vectorTwo;
-    public LineRenderer line;
     public Material material;
 
     private LineRenderer lineTwo;
@@ -17,18 +16,6 @@ public class ProjectionVisualizer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // initial parameters for line render
-        // Vector3[] initialPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
-        // line.SetPositions(initialPositions);
-        // line.startWidth = 0.02f;
-        // line.endWidth = 0.02f;
-
-        // // get the second line renderer
-        // lineTwo = transform.Find("Origin").GetComponent<LineRenderer>();
-        // lineTwo.SetPositions(initialPositions);
-        // lineTwo.startWidth = 0.02f;
-        // lineTwo.endWidth = 0.02f;
-
         // initializing triangle mesh
         gameObject.AddComponent<MeshFilter>();
         meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -62,14 +49,6 @@ public class ProjectionVisualizer : MonoBehaviour
         // getting projection of hit vector onto direction of the current vector
         Vector3 projection = Vector3.Project(vecTwo, vecOne);
 
-        // // render the line from vector two to projection onto vector one (scaling up by 2)
-        // Vector3[] newPositions = new Vector3[ 2 ] { vecTwo * 2.5f, projection * 2.5f};
-        // line.SetPositions(newPositions);
-
-        // // render the second line using the projection
-        // Vector3[] newPositionsTwo = new Vector3[ 2 ] { Vector3.zero, projection * 2.5f};
-        // lineTwo.SetPositions(newPositionsTwo);
-
         // rendering the triangle
         if (vecTwo.y > 0) {
             if (vecTwo.x < 0) {
@@ -83,7 +62,26 @@ public class ProjectionVisualizer : MonoBehaviour
             } else {
                 vertices = new[] {vecTwo * 2.5f, Vector3.zero, projection * 2.5f};
             }
-        }
+        }    
+
+        // // get local coordinates of vectors
+        // Vector3 localVecOne = transform.InverseTransformPoint(vecOne);
+        // Vector3 localVecTwo = transform.InverseTransformPoint(vecTwo);
+
+
+        // if (localVecTwo.y >= 0 && localVecOne.y >= 0) {   // if both y coords greater than zero
+        //     if (localVecTwo.x >= 0 && localVecOne.x >= 0) {   // if both x coords greater than zero
+        //         vertices = new[] {vecTwo * 2.5f, projection * 2.5f, Vector3.zero};
+        //     } else {
+        //         vertices = new[] {vecTwo * 2.5f, Vector3.zero, projection * 2.5f};
+        //     }
+        // } else {
+        //     if (localVecTwo.x >= 0 && localVecOne.x >= 0) {
+        //         vertices = new[] {projection * 2.5f, vecTwo * 2.5f, Vector3.zero};
+        //     } else {
+        //         vertices = new[] {projection * 2.5f, Vector3.zero, vecTwo * 2.5f};
+        //     }
+        // }
         
         
         mesh.vertices = vertices;

@@ -41,11 +41,19 @@ public class ControllerManager : MonoBehaviour
         if ((currSceneName != "ClassroomInitial") && (currSceneName != "ClassroomLesson8To9") && (currSceneName != "ClassroomLessonFinal") && (currSceneName != "LessonAnimationTest"))
         {
             // initialize outlines to disabled
-            Vector1.GetComponent<Outline>().enabled = false;
-            Vector2.GetComponent<Outline>().enabled = false;
-
+            if (Vector1.GetComponent<Outline>()) {
+                Vector1.GetComponent<Outline>().enabled = false;
+            }
+            
+            if (Vector2.GetComponent<Outline>()) {
+                Vector2.GetComponent<Outline>().enabled = false;
+            }
+            
             currentVector = defaultVector;
-            currentVector.GetComponent<Outline>().enabled = true;
+            if (currentVector.GetComponent<Outline>()) {
+                currentVector.GetComponent<Outline>().enabled = true;
+            }
+            
         }
     }
 
