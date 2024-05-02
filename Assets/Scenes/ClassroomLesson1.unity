@@ -4540,7 +4540,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386618022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66e404219c0aa8845b2644debb1129e4, type: 3}
   m_Name: 
@@ -4552,7 +4552,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386618022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52be018807349c842826b99f78d733bd, type: 3}
   m_Name: 
@@ -4577,6 +4577,7 @@ MonoBehaviour:
   selectPointerMaterial: {fileID: 2100000, guid: 70da0781a7807bb44831eb1a089cd7b4, type: 2}
   defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
   nextSceneName: ClassroomLesson2
+  defaultVector: {fileID: 1668018301}
 --- !u!114 &1386618031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4771,7 +4772,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436177706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -5584,7 +5585,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668018301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -6681,6 +6682,26 @@ PrefabInstance:
       propertyPath: m_AdditionalVertexStreams
       value: 
       objectReference: {fileID: 16343508}
+    - target: {fileID: 532220974788163815, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 532220974788163815, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 532220974788163815, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 532220974788163815, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 532220974788163815, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1229754354204564700, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6703,7 +6724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4043386180738121219, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 6.7
       objectReference: {fileID: 0}
     - target: {fileID: 4043386180738121219, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6765,6 +6786,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: af187e204a0603d438d2d211f02948e7, type: 2}
+    - target: {fileID: 8989477932172582256, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1808317800675038907, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
     - {fileID: 8685816207929755083, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
