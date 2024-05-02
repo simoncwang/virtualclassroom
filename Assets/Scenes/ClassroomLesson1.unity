@@ -4765,6 +4765,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 687188104312813098, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
   m_PrefabInstance: {fileID: 1884511591}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1436177708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436177706}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1456518625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5560,6 +5578,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 653298359712161119, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
   m_PrefabInstance: {fileID: 1884511591}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1668018303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668018301}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1679217639
 GameObject:
   m_ObjectHideFlags: 0
@@ -6761,7 +6797,13 @@ PrefabInstance:
     - {fileID: 7438333009325946089, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 687188104312813098, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1436177708}
+    - targetCorrespondingSourceObject: {fileID: 653298359712161119, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1668018303}
   m_SourcePrefab: {fileID: 100100000, guid: c9ea08211984a2f418515401a044f9e0, type: 3}
 --- !u!1 &1903101799
 GameObject:

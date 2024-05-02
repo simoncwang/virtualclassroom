@@ -7,6 +7,8 @@ public class RotateAnimation : MonoBehaviour
     public GameObject OVRManager;
     private Vector3 originalRotation;
     private Vector3 currentRotation;
+    private float time;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +18,16 @@ public class RotateAnimation : MonoBehaviour
 
         // set original rotation for reference
         originalRotation = transform.eulerAngles;
+
+        // setting initial time to 0
+        time = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > 10f) {
+        time += Time.deltaTime;
+        if (time > 10f) {
             // after 10 seconds disable this script and set back to original rotation
             transform.eulerAngles = originalRotation;
             OVRManager.GetComponent<ControllerManager>().enabled = true;

@@ -5,18 +5,23 @@ using UnityEngine;
 public class ScaleAnimation : MonoBehaviour
 {   
     public GameObject OVRManager;
+    private float time;
+
     // Start is called before the first frame update
     void Start()
     {
         // enable this script on start and disable controller manager script
         OVRManager.GetComponent<ControllerManager>().enabled = false;
         OVRManager.GetComponent<LineRenderer>().enabled = false;
+
+        time = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > 10f) {
+        time += Time.deltaTime;
+        if (time > 10f) {
             // after 5 seconds disable this script and set back to original scale
             transform.localScale = new Vector3(1,1,1);
             OVRManager.GetComponent<ControllerManager>().enabled = true;
