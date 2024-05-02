@@ -26,12 +26,14 @@ public class DrawText : MonoBehaviour
     private string[] demo3_text = {"Find the angle between the two vectors. (scene 11 2)",
                                     "a = ai + 4j		b = 5i - 4j",
                                     "a \u2022 b = |a| |b|",
-                                    ""};
+                                    "	=",
+                                    "dummy4",
+                                    "dummy5"};
 
     private float[] durations; // numerical tutorial video durations
     private float[] demo1_time = {1f, 1f, 1f, 1f, 1f, 1f}; // index 0 is duration for ""
     private float[] demo2_time = {1f, 1f, 1f, 1f, 1f}; // index 0 is duration for ""
-    private float[] demo3_time = {1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f}; // index 0 is duration for "Now let's say if we have 2 vectors..."
+    private float[] demo3_time = {1f, 1f, 1f, 1f, 1f, 1f, 3f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f}; // index 0 is duration for "Now let's say if we have 2 vectors..."
 
     private GameObject cos;
     private GameObject theta;
@@ -50,8 +52,9 @@ public class DrawText : MonoBehaviour
     private GameObject sqrt1;
     private GameObject sqrt_long1;
     private GameObject sqrt_long2;
-    private GameObject sqrt_long3;    
-    GameObject[] line3Content; // for demo3
+    private GameObject sqrt_long3;
+    // private string[] demo3_line3_text = {"a \u2022 b"};
+    // private string[] demo3_line4_text = {};
 
     void Start()
     {
@@ -93,7 +96,7 @@ public class DrawText : MonoBehaviour
             numerator1 = GameObject.Find("TMP_numerator1");
             numerator1TMP = numerator1.GetComponent<TMP_Text>();
             // Debug.LogError("[numerator1TMP] " + numerator1TMP.text); // outputs string text
-            numerator1.SetActive(false);
+            numerator1TMP.enabled = false;
             fraction1 = GameObject.Find("fraction1");
             fraction1.SetActive(false);
             denominator1 = GameObject.Find("TMP_denominator1");
@@ -169,21 +172,51 @@ public class DrawText : MonoBehaviour
         {
             for (int i = 1; i < lines.Length; i++)
             {
+                if (i == 1) {  
+                    mainlessonContentTMP.text += "\n" + lines[i];
+                    yield return new WaitForSeconds(durations[i]);
+                }
+
                 if (i == 2)
                 {
                     cos.SetActive(true);
                     theta.SetActive(true);
                     mainlessonContentTMP.text += "\n" + lines[i];
                     yield return new WaitForSeconds(durations[i]);                    
-                } else if (i == 3) {
-                    // for (int j = 0; j < durations.Length - lines.Length; j++)
-                    // {
-                    //     line3Content[j].SetActive(true);
-                    //     yield return new WaitForSeconds(durations[lines.Length + j]);
-                    // }
-                } else if (i == 4) {
+                }
+                
+                if (i == 3) {
+                    /*** Sorry, bad implementation atm but at least it works ***/
+                    int skip = 3;
+                    numerator1TMP.text = numerator1TMP.text; // FIXME: change to demo3_line3_text content
+                    numerator1TMP.enabled = true;
+                    fraction1.SetActive(true);
+                    denominator1TMP.text = denominator1TMP.text; // FIXME: change to demo3_line3_text content
+                    denominator1TMP.enabled = true;
+                    yield return new WaitForSeconds(durations[i+skip]);
+                    mainlessonContentTMP.text += "\n" + lines[i];
+                    yield return new WaitForSeconds(durations[i+skip+1]);
+                    numerator2TMP.text = numerator2TMP.text; // FIXME: change to demo3_line3_text content
+                    numerator2TMP.enabled = true;
+                    yield return new WaitForSeconds(durations[i+skip+2]);
+                    fraction2.SetActive(true);
+                    yield return new WaitForSeconds(durations[i+skip+3]);
+                    denominator2TMP.text = denominator2TMP.text; // FIXME: change to demo3_line3_text content
+                    denominator2TMP.enabled = true;
+                    denominator3TMP.text = denominator3TMP.text; // FIXME: change to demo3_line3_text content
+                    denominator3TMP.enabled = true;    
+                    sqrt_long1.SetActive(true);                
+                    sqrt_long2.SetActive(true);
+                    yield return new WaitForSeconds(durations[i+skip+4]);
 
-                } else {
+                }
+                
+                if (i == 4) {
+                    mainlessonContentTMP.text += "\n" + lines[i];
+                    yield return new WaitForSeconds(durations[i]);
+                }
+
+                if (i == 5) {
                     mainlessonContentTMP.text += "\n" + lines[i];
                     yield return new WaitForSeconds(durations[i]);
                 }
