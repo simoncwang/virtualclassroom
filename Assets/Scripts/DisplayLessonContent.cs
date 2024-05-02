@@ -23,7 +23,7 @@ public class DrawText : MonoBehaviour
                                     "|a| =     a<sub>x</sub><sup>2</sup> + a<sub>y</sub><sup>2</sup>",
                                     "|a| =     3<sup>2</sup> + 4<sup>2</sup> =    9 + 16 =    25",
                                     "				= 5"};
-    private string[] demo3_text = {"Find the angle between the two vectors. (scene 11 2)",
+    private string[] demo3_text = {"Find the angle between the two vectors.",
                                     "a = ai + 4j		b = 5i - 4j",
                                     "a \u2022 b = |a| |b|",
                                     "	=",
@@ -38,9 +38,19 @@ public class DrawText : MonoBehaviour
                                     1f, 1f, 1f, 1f,
                                     1f, 1f, 1f};
 
-    // private string[] demo3_line3_text = {"a \u2022 b"};
-    // private string[] demo3_line4_text = {};
-    // private string[] demo3_line5_text = {};
+    private string[] demo3_line3_text = {"a \u2022 b",
+                                         "|a| |b|",
+                                         "3 (5) + 4 (-4)",
+                                         "3<sup>2</sup> + 4<sup>2</sup>",
+                                         "5<sup>2</sup> + (-4)<sup>2</sup>"};
+    private string[] demo3_line4_text = {"15 - 16",
+                                         "9 + 16",
+                                         "25 + 16",
+                                         "-1",
+                                         "5   41"};
+    private string[] demo3_line5_text = {"-1",
+                                         "5   41",
+                                         " 91.79\u00B0"};
 
     private GameObject cos1;
     private GameObject cos2;
@@ -92,7 +102,7 @@ public class DrawText : MonoBehaviour
 
     private GameObject line5;
     private TMP_Text line5TMP;
-    private string[] line5_text = {"=", "     = 91.79\u00B0"};
+    private string[] line5_text = {"=", "     ="};
 
     void Start()
     {
@@ -272,22 +282,22 @@ public class DrawText : MonoBehaviour
                 if (i == 3) {
                     /*** Sorry, bad implementation atm but at least it works ***/
                     int skip = 3;
-                    numerator1TMP.text = numerator1TMP.text; // FIXME: change to demo3_line3_text content
+                    numerator1TMP.text = demo3_line3_text[0];
                     numerator1TMP.enabled = true;
                     fraction1.SetActive(true);
-                    denominator1TMP.text = denominator1TMP.text; // FIXME: change to demo3_line3_text content
+                    denominator1TMP.text = demo3_line3_text[1];
                     denominator1TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip]);
                     mainlessonContentTMP.text += "\n" + lines[i];
                     yield return new WaitForSeconds(durations[i+skip+1]);
-                    numerator2TMP.text = numerator2TMP.text; // FIXME: change to demo3_line3_text content
+                    numerator2TMP.text = demo3_line3_text[2];
                     numerator2TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip+2]);
                     fraction2.SetActive(true);
                     yield return new WaitForSeconds(durations[i+skip+3]);
-                    denominator2TMP.text = denominator2TMP.text; // FIXME: change to demo3_line3_text content
+                    denominator2TMP.text = demo3_line3_text[3];
                     denominator2TMP.enabled = true;
-                    denominator3TMP.text = denominator3TMP.text; // FIXME: change to demo3_line3_text content
+                    denominator3TMP.text = demo3_line3_text[4];
                     denominator3TMP.enabled = true;    
                     sqrt_long1.SetActive(true);                
                     sqrt_long2.SetActive(true);
@@ -298,21 +308,21 @@ public class DrawText : MonoBehaviour
                     int skip = 7;
                     mainlessonContentTMP.text += "\n" + lines[i];
                     yield return new WaitForSeconds(durations[i+skip]);                    
-                    numerator3TMP.text = numerator3TMP.text; // FIXME: 
+                    numerator3TMP.text = demo3_line4_text[0];
                     numerator3TMP.enabled = true;
                     fraction3.SetActive(true);
                     sqrt_long3.SetActive(true);                    
-                    denominator4TMP.text = denominator4TMP.text; // FIXME: 
+                    denominator4TMP.text = demo3_line4_text[1];
                     denominator4TMP.enabled = true;
                     sqrt_long4.SetActive(true);
-                    denominator5TMP.text = denominator5TMP.text; // FIXME: 
+                    denominator5TMP.text = demo3_line4_text[2];
                     denominator5TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip+1]);
                     mainlessonContentTMP.text += "			=";
-                    numerator4TMP.text = numerator4TMP.text; // FIXME: 
+                    numerator4TMP.text = demo3_line4_text[3];
                     numerator4TMP.enabled = true;
                     fraction4.SetActive(true);
-                    denominator6TMP.text = denominator6TMP.text; // FIXME: 
+                    denominator6TMP.text = demo3_line4_text[4];
                     denominator6TMP.enabled = true;
                     sqrt1.SetActive(true);
                     yield return new WaitForSeconds(durations[i+skip+2]);
@@ -330,14 +340,14 @@ public class DrawText : MonoBehaviour
                     line5TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip+1]);
                     inv_cos.SetActive(true);
-                    numerator5TMP.text = numerator5TMP.text; // FIXME: 
+                    numerator5TMP.text = demo3_line5_text[0];
                     numerator5TMP.enabled = true;
                     fraction5.SetActive(true);
                     sqrt2.SetActive(true);
-                    denominator7TMP.text = denominator7TMP.text; // FIXME: 
+                    denominator7TMP.text = demo3_line5_text[1];
                     denominator7TMP.enabled = true;
                     yield return new WaitForSeconds(durations[i+skip+2]);
-                    line5TMP.text += "\n" + line5_text[1];
+                    line5TMP.text += "\n" + line5_text[1] + demo3_line5_text[2];
                 }
             }
         }
