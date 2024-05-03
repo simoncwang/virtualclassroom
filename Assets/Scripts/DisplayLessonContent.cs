@@ -13,7 +13,7 @@ public class DrawText : MonoBehaviour
 
     private string[] lines; // numerical tutorial video content
     private string[] demo1_text = {"Find the dot product.",
-                                    "a = 3i + 4j		b = 5i - 2j",
+                                    "a = 4i - 7j		b = -2i + 3j",
                                     "a = a<sub>x</sub>i + a<sub>y</sub>j		b = b<sub>x</sub>i + b<sub>y</sub>j",
                                     "a \u2022 b = a<sub>x</sub>b<sub>x</sub> + a<sub>y</sub>b<sub>y</sub>",
                                     "        = 4 (-2) + -7 (3)",
@@ -24,19 +24,19 @@ public class DrawText : MonoBehaviour
                                     "|a| =     3<sup>2</sup> + 4<sup>2</sup> =    9 + 16 =    25",
                                     "				= 5"};
     private string[] demo3_text = {"Find the angle between the two vectors.",
-                                    "a = ai + 4j		b = 5i - 4j",
+                                    "a = 3i + 4j		b = 5i - 4j",
                                     "a \u2022 b = |a| |b|",
                                     "	=",
                                     "=",
                                     ""};
 
     private float[] durations; // numerical tutorial video durations
-    private float[] demo1_time = {1f, 1f, 1f, 1f, 1f, 1f}; // index 0 is duration for ""
-    private float[] demo2_time = {1f, 1f, 1f, 1f, 1f}; // index 0 is duration for ""
-    private float[] demo3_time = {1f, 1f, 1f, 1f, 1f, 1f,  // index 0 is duration for "Now let's say if we have 2 vectors..."
-                                    1f, 1f, 1f, 1f, 1f,
-                                    1f, 1f, 1f, 1f,
-                                    1f, 1f, 1f};
+    private float[] demo1_time = {0f, 6f, 8f, 9f, 5f, 10f}; // index 0 is duration for ""
+    private float[] demo2_time = {2f, 3f, 9f, 13f, 1f}; // index 0 is duration for ""
+    private float[] demo3_time = {3f, 20f, 12f, 0f, 0f, 0f,  // index 0 is duration for "Now let's say if we have 2 vectors..."
+                                    5f, 12f, 12f, 1f,
+                                    47f, 1f, 16f, 15f,
+                                    9f, 1f, 1f, 27f};
 
     private string[] demo3_line3_text = {"a \u2022 b",
                                          "|a| |b|",
