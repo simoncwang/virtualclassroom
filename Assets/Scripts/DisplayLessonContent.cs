@@ -104,8 +104,14 @@ public class DrawText : MonoBehaviour
     private TMP_Text line5TMP;
     private string[] line5_text = {"=", "     ="};
 
+    // variables for updating text live
+    private InfoUpdater infoScript;
+
     void Start()
     {
+        // getting vector info updater script
+        infoScript = GetComponent<InfoUpdater>();
+
         mainLessonContent = GameObject.Find("Text (TMP)");  // checked: not null
         mainlessonContentTMP = mainLessonContent.GetComponent<TMP_Text>(); // throwing errors fsr...
 
@@ -351,5 +357,8 @@ public class DrawText : MonoBehaviour
                 }
             }
         }
+
+        // at the end of all animations, enable the info updater script
+        infoScript.enabled = true;
     }
 }

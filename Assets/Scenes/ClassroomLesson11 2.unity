@@ -7146,6 +7146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1791826651}
   - component: {fileID: 1791826650}
+  - component: {fileID: 1791826652}
   m_Layer: 0
   m_Name: Lesson
   m_TagString: Untagged
@@ -7214,6 +7215,21 @@ Transform:
   - {fileID: 514481603}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
+--- !u!114 &1791826652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791826649}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43d73ece5f75b64ea571b9540624302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vectorOne: {fileID: 1734807646}
+  vectorTwo: {fileID: 1734807645}
+  DemoName: demo3
 --- !u!1 &1839189588
 GameObject:
   m_ObjectHideFlags: 0
