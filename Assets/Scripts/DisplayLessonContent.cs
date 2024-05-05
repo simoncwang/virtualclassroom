@@ -13,7 +13,7 @@ public class DrawText : MonoBehaviour
 
     private string[] lines; // numerical tutorial video content
     private string[] demo1_text = {"Find the dot product.",
-                                    "a = 4i - 7j		b = -2i + 3j",
+                                    "a = 3i + 4j		b = -2i + 3j",
                                     "a = a<sub>x</sub>i + a<sub>y</sub>j		b = b<sub>x</sub>i + b<sub>y</sub>j",
                                     "a \u2022 b = a<sub>x</sub>b<sub>x</sub> + a<sub>y</sub>b<sub>y</sub>",
                                     "        = 4 (-2) + -7 (3)",
@@ -49,7 +49,7 @@ public class DrawText : MonoBehaviour
                                          "-1",
                                          "5   41"};
     private string[] demo3_line5_text = {"-1",
-                                         "5   41",
+                                         "25   41",
                                          " 91.79\u00B0"};
 
     private GameObject cos1;
@@ -95,6 +95,7 @@ public class DrawText : MonoBehaviour
 
     private GameObject sqrt1;
     private GameObject sqrt2;
+    private GameObject sqrt3;
     private GameObject sqrt_long1;
     private GameObject sqrt_long2;
     private GameObject sqrt_long3;
@@ -224,6 +225,9 @@ public class DrawText : MonoBehaviour
             inv_cos = GameObject.Find("inv_cos");
             inv_cos.SetActive(false);
 
+            sqrt3 = GameObject.Find("square_root3");
+            sqrt3.SetActive(false);
+
             lines = demo3_text;
             durations = demo3_time;
 
@@ -331,6 +335,7 @@ public class DrawText : MonoBehaviour
                     denominator6TMP.text = demo3_line4_text[4];
                     denominator6TMP.enabled = true;
                     sqrt1.SetActive(true);
+                    sqrt3.SetActive(true);
                     yield return new WaitForSeconds(durations[i+skip+2]);
                     mainlessonContentTMP.text += "	     =";
                     cos2.SetActive(true);

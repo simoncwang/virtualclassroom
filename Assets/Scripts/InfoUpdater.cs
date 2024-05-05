@@ -16,9 +16,33 @@ public class InfoUpdater : MonoBehaviour
     void Start()
     {
         Debug.Log("info updater script started");
+
+        // translating certain text elements to make them fit the float numbers
         if (DemoName == "demo2") {
-            // translate the position of the square root symbol
             GameObject.Find("square_root1").transform.Translate(1f,0,0);
+        }
+
+        if (DemoName == "demo3") {
+            GameObject.Find("TMP_numerator2").transform.Translate(-1f,0,0);
+            GameObject.Find("TMP_denominator3").transform.Translate(0.7f,0,0);
+            GameObject.Find("square_root_long2").transform.Translate(0.7f,0,0);
+            GameObject.Find("TMP_numerator3").transform.Translate(-0.5f,0,0);
+            GameObject.Find("square_root_long4").transform.Translate(0.7f,0,0);
+            GameObject.Find("TMP_denominator5").transform.Translate(0.7f,0,0);
+
+            GameObject.Find("TMP_numerator4").transform.Translate(1.2f,0,0);
+            GameObject.Find("fraction4").transform.Translate(1.2f,0,0);
+            GameObject.Find("square_root1").transform.Translate(1.6f,0,0);
+            GameObject.Find("TMP_denominator6").transform.Translate(1.2f,0,0);
+            GameObject.Find("cos2").transform.Translate(1.3f,0,0);
+            GameObject.Find("theta2").transform.Translate(1.3f,0,0);
+
+            GameObject.Find("TMP_numerator5").transform.Translate(-0.3f,0,0);
+
+            // enable additional square root symbol
+            GameObject.Find("square_root3").SetActive(true);
+            GameObject.Find("square_root3").transform.Translate(1.3f,0,0);
+
         }
     }
 
@@ -98,6 +122,95 @@ public class InfoUpdater : MonoBehaviour
 
             // setting the new text into the UI
             GameObject.Find("Text (TMP)").GetComponent<TMP_Text>().text = text;
+        } else if (DemoName == "demo3") {
+
+            // getting all text elements that include numbers
+            TMP_Text mainlessonContentTMP = GameObject.Find("Text (TMP)").GetComponent<TMP_Text>();
+            TMP_Text numerator2TMP = GameObject.Find("TMP_numerator2").GetComponent<TMP_Text>();
+            TMP_Text denominator2TMP = GameObject.Find("TMP_denominator2").GetComponent<TMP_Text>();
+            TMP_Text denominator3TMP = GameObject.Find("TMP_denominator3").GetComponent<TMP_Text>();
+            TMP_Text numerator3TMP = GameObject.Find("TMP_numerator3").GetComponent<TMP_Text>();
+            TMP_Text denominator4TMP = GameObject.Find("TMP_denominator4").GetComponent<TMP_Text>();
+            TMP_Text denominator5TMP = GameObject.Find("TMP_denominator5").GetComponent<TMP_Text>();
+            TMP_Text numerator4TMP = GameObject.Find("TMP_numerator4").GetComponent<TMP_Text>();
+            TMP_Text denominator6TMP = GameObject.Find("TMP_denominator6").GetComponent<TMP_Text>();
+            TMP_Text numerator5TMP = GameObject.Find("TMP_numerator5").GetComponent<TMP_Text>();
+            TMP_Text denominator7TMP = GameObject.Find("TMP_denominator7").GetComponent<TMP_Text>();
+
+            // updating texts automatically when vectors are changed
+            string text = "";
+
+            // main text
+            text += "Find the angle between the two vectors.";
+
+            // getting + or - depending on sign of coordinate
+            string signA = "";
+            if (vecTwo.y < 0) {
+                signA = "-";
+            } else {
+                signA = "+";
+            }
+
+            string signB = "";
+            if (vecOne.y < 0) {
+                signB = "-";
+            } else {
+                signB = "+";
+            }
+
+            text += "\na = " + (vecTwo.x * scaleFactor).ToString("F1") + "i " + signA + Mathf.Abs((vecTwo.y * scaleFactor)).ToString("F1") + "j		b = " + (vecOne.x * scaleFactor).ToString("F1") + "i " + signB + Mathf.Abs((vecOne.y * scaleFactor)).ToString("F1") + "j";
+
+            text += "\na \u2022 b = |a| |b|";
+            text += "\n	=";
+            text += "\n=			        =	    =";
+
+            // updating the text
+            mainlessonContentTMP.text = text;
+
+
+            // numerator 2 text
+            text = (vecTwo.x * scaleFactor).ToString("F1") + " (" + (vecOne.x * scaleFactor).ToString("F1") + ") + " + (vecTwo.y * scaleFactor).ToString("F1") + " (" + (vecOne.y * scaleFactor).ToString("F1") + ")";
+            numerator2TMP.text = text;
+
+            // denominator 2 text
+            text = (vecTwo.x * scaleFactor).ToString("F1") + "<sup>2</sup> + " + (vecTwo.y * scaleFactor).ToString("F1") + "<sup>2</sup>";
+            denominator2TMP.text = text;
+
+            // denominator 3 text
+            text = (vecOne.x * scaleFactor).ToString("F1") + "<sup>2</sup> + " + (vecOne.y * scaleFactor).ToString("F1") + "<sup>2</sup>";
+            denominator3TMP.text = text;
+
+            // numerator 3 text
+            text = ((vecTwo.x * scaleFactor)*(vecOne.x * scaleFactor)).ToString("F1") + " + " + ((vecTwo.y * scaleFactor)*(vecOne.y * scaleFactor)).ToString("F1");
+            numerator3TMP.text = text;
+
+            // denominator 4 text
+            float axsquare = (vecTwo.x * scaleFactor) * (vecTwo.x * scaleFactor);
+            float aysquare = (vecTwo.y * scaleFactor) * (vecTwo.y * scaleFactor);
+
+            text = axsquare.ToString("F1") + " + " + aysquare.ToString("F1");
+            denominator4TMP.text = text;
+
+            // denominator 5 text
+            float bxsquare = (vecOne.x * scaleFactor) * (vecOne.x * scaleFactor);
+            float bysquare = (vecOne.y * scaleFactor) * (vecOne.y * scaleFactor);
+
+            text = bxsquare.ToString("F1") + " + " + bysquare.ToString("F1");
+            denominator5TMP.text = text;
+
+            // numerator 4 text
+            float axbx = (vecTwo.x * scaleFactor)*(vecOne.x * scaleFactor);
+            float ayby = (vecTwo.y * scaleFactor)*(vecOne.y * scaleFactor);
+            text = (axbx + ayby).ToString("F1");
+            numerator4TMP.text = text;
+
+            // denominator 6 text
+            text = (axsquare + aysquare).ToString("F1") + "  " + (bxsquare + bysquare).ToString("F1"); 
+            denominator6TMP.text = text;
+
+            // numerator 5 text
+            text = (axbx + ayby).ToString("F1");
+            numerator5TMP.text = text;
         }
         
 
