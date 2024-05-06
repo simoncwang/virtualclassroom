@@ -7,6 +7,7 @@ public class RotateAnimation : MonoBehaviour
     public GameObject OVRManager;
     private Vector3 originalRotation;
     private Vector3 currentRotation;
+    public GameObject PopUp;
     private float time;
 
     // Start is called before the first frame update
@@ -21,6 +22,10 @@ public class RotateAnimation : MonoBehaviour
 
         // setting initial time to 0
         time = 0f;
+
+        // disabling poop up at start
+        PopUp.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -32,6 +37,7 @@ public class RotateAnimation : MonoBehaviour
             transform.eulerAngles = originalRotation;
             OVRManager.GetComponent<ControllerManager>().enabled = true;
             OVRManager.GetComponent<LineRenderer>().enabled = true;
+            PopUp.SetActive(true);
             this.enabled = false;
         }
 

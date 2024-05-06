@@ -4682,13 +4682,13 @@ PrefabInstance:
       addedObject: {fileID: 1888252063}
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1888252062}
-    - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1888252061}
     - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1888252060}
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1888252065}
     - targetCorrespondingSourceObject: {fileID: 113768, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1139485398}
@@ -4745,7 +4745,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52be018807349c842826b99f78d733bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &1888252062
+--- !u!114 &1888252063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888252055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45caab9dc0cb6b841b2ec5732a2bc816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserLineRenderer: {fileID: 1888252065}
+  Vector1: {fileID: 258755863}
+  Vector2: {fileID: 1937754587}
+  rotateMaterial: {fileID: 2100000, guid: 891cb734b1022d246a31907346236591, type: 2}
+  scaleMaterial: {fileID: 2100000, guid: a1c25e8e73c7f8f42a98e91dd31d27d8, type: 2}
+  selectPointerMaterial: {fileID: 2100000, guid: 70da0781a7807bb44831eb1a089cd7b4, type: 2}
+  defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
+  nextSceneName: ClassroomLesson3
+  defaultVector: {fileID: 1937754587}
+--- !u!114 &1888252064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888252055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323ad1e7f4e8110458b598a26da25c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!120 &1888252065
 LineRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -4797,17 +4830,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.014286587
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.64286524
-        value: 0.09999858
+        time: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -4858,39 +4882,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &1888252063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888252055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45caab9dc0cb6b841b2ec5732a2bc816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserLineRenderer: {fileID: 1888252062}
-  Vector1: {fileID: 258755863}
-  Vector2: {fileID: 1937754587}
-  rotateMaterial: {fileID: 2100000, guid: 891cb734b1022d246a31907346236591, type: 2}
-  scaleMaterial: {fileID: 2100000, guid: a1c25e8e73c7f8f42a98e91dd31d27d8, type: 2}
-  selectPointerMaterial: {fileID: 2100000, guid: 70da0781a7807bb44831eb1a089cd7b4, type: 2}
-  defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
-  nextSceneName: ClassroomLesson3
-  defaultVector: {fileID: 1937754587}
---- !u!114 &1888252064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888252055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 323ad1e7f4e8110458b598a26da25c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1937754587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9176628132682235547, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}

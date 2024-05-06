@@ -6,6 +6,8 @@ public class ScaleAnimation : MonoBehaviour
 {   
     public GameObject OVRManager;
     private float time;
+    private float initialScale;
+    public GameObject PopUp;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,11 @@ public class ScaleAnimation : MonoBehaviour
         OVRManager.GetComponent<LineRenderer>().enabled = false;
 
         time = 0f;
+
+        // getting initial scale
+        initialScale = transform.localScale.x;
+
+        PopUp.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,9 +30,10 @@ public class ScaleAnimation : MonoBehaviour
         time += Time.deltaTime;
         if (time > 10f) {
             // after 5 seconds disable this script and set back to original scale
-            transform.localScale = new Vector3(1,1,1);
+            transform.localScale = new Vector3(initialScale,1,1);
             OVRManager.GetComponent<ControllerManager>().enabled = true;
             OVRManager.GetComponent<LineRenderer>().enabled = true;
+            PopUp.SetActive(true);
             this.enabled = false;
         }
 

@@ -163,12 +163,12 @@ public class ControllerManager : MonoBehaviour
                     }
                 } else {
                     changeColor(laserLineRenderer, defaultPointerMaterial);   // change back to default color
-                    if (GetButtonPress()) //  && (nextSceneName.StartsWith("ClassroomLesson9") || nextSceneName.StartsWith("ClassroomLesson10") || nextSceneName.StartsWith("ClassroomLesson11"))
-                    {
-                        // Debug.Log("Current scene : " + currSceneName);
-                        Debug.Log("Loading next scene...");
-                        SceneManager.LoadScene(nextSceneName);
-                    }
+                    // if (GetButtonPress()) //  && (nextSceneName.StartsWith("ClassroomLesson9") || nextSceneName.StartsWith("ClassroomLesson10") || nextSceneName.StartsWith("ClassroomLesson11"))
+                    // {
+                    //     // Debug.Log("Current scene : " + currSceneName);
+                    //     Debug.Log("Loading next scene...");
+                    //     SceneManager.LoadScene(nextSceneName);
+                    // }
                 }
             }
 		}

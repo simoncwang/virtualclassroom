@@ -11,9 +11,11 @@ public class DrawText : MonoBehaviour
     private TMP_Text mainlessonContentTMP;
     public string demo;
 
+    public GameObject OVRManager;
+
     private string[] lines; // numerical tutorial video content
     private string[] demo1_text = {"Find the dot product.",
-                                    "a = 3i + 4j		b = -2i + 3j",
+                                    "a = 4i + -7j		b = -2i + 3j",
                                     "a = a<sub>x</sub>i + a<sub>y</sub>j		b = b<sub>x</sub>i + b<sub>y</sub>j",
                                     "a \u2022 b = a<sub>x</sub>b<sub>x</sub> + a<sub>y</sub>b<sub>y</sub>",
                                     "        = 4 (-2) + -7 (3)",
@@ -47,9 +49,9 @@ public class DrawText : MonoBehaviour
                                          "9 + 16",
                                          "25 + 16",
                                          "-1",
-                                         "5   41"};
+                                         "25   41"};
     private string[] demo3_line5_text = {"-1",
-                                         "25   41",
+                                         "5   41",
                                          " 91.79\u00B0"};
 
     private GameObject cos1;
@@ -112,6 +114,10 @@ public class DrawText : MonoBehaviour
     {
         // getting vector info updater script
         infoScript = GetComponent<InfoUpdater>();
+
+        // disable controller manager and laser script at the start
+        OVRManager.GetComponent<ControllerManager>().enabled = false;
+        OVRManager.GetComponent<LineRenderer>().enabled = false;
 
         mainLessonContent = GameObject.Find("Text (TMP)");  // checked: not null
         mainlessonContentTMP = mainLessonContent.GetComponent<TMP_Text>(); // throwing errors fsr...
@@ -363,7 +369,9 @@ public class DrawText : MonoBehaviour
             }
         }
 
-        // at the end of all animations, enable the info updater script
+        // at the end of all animations, enable the info updater, controller manager, and laser script
         infoScript.enabled = true;
+        OVRManager.GetComponent<ControllerManager>().enabled = true;
+        OVRManager.GetComponent<LineRenderer>().enabled = true;
     }
 }
