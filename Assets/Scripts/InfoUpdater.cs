@@ -43,6 +43,9 @@ public class InfoUpdater : MonoBehaviour
             GameObject.Find("square_root3").SetActive(true);
             GameObject.Find("square_root3").transform.Translate(1.3f,0,0);
 
+            // disable last square root
+            GameObject.Find("square_root2").SetActive(false);
+
         }
     }
 
@@ -137,6 +140,8 @@ public class InfoUpdater : MonoBehaviour
             TMP_Text numerator5TMP = GameObject.Find("TMP_numerator5").GetComponent<TMP_Text>();
             TMP_Text denominator7TMP = GameObject.Find("TMP_denominator7").GetComponent<TMP_Text>();
 
+            TMP_Text line5TMP = GameObject.Find("line5").GetComponent<TMP_Text>();
+
             // updating texts automatically when vectors are changed
             string text = "";
 
@@ -211,6 +216,23 @@ public class InfoUpdater : MonoBehaviour
             // numerator 5 text
             text = (axbx + ayby).ToString("F1");
             numerator5TMP.text = text;
+
+            // denominator 7 text
+            float sqrtA = Mathf.Sqrt(axsquare + aysquare);
+            float sqrtB = Mathf.Sqrt(bxsquare + bysquare);
+
+            text = "(" + sqrtA.ToString("F1") + ")" + "(" + sqrtB.ToString("F1") + ")";
+            denominator7TMP.text = text;
+
+            // line 5 text
+            text = "=";
+            text += "\n     =";
+
+            // calculating actual inverse cosine
+            float result = Mathf.Acos((axbx + ayby)/(sqrtA*sqrtB)) * Mathf.Rad2Deg;
+
+            text += " " + result.ToString("F1");
+            line5TMP.text = text;
         }
         
 
