@@ -43,9 +43,12 @@ public class ProjectionVisualizer : MonoBehaviour
         // getting dot product
         float dotProduct = Vector3.Dot(vecOne, vecTwo);
 
-        // setting scale of dot product object to this value
+        if (transform.Find("Dot Product")) {
+// setting scale of dot product object to this value
         transform.Find("Dot Product").transform.localScale = new Vector3(dotProduct * vectorOneLength, 1, 1);
 
+        }
+        
         // getting projection of hit vector onto direction of the current vector
         Vector3 projection = Vector3.Project(vecTwo, vecOne);
 
