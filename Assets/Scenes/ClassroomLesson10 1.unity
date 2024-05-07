@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OVRManager: {fileID: 0}
+  PopUp: {fileID: 0}
 --- !u!114 &217871992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OVRManager: {fileID: 0}
+  PopUp: {fileID: 0}
 --- !u!114 &279310712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,6 +1904,7 @@ MonoBehaviour:
   defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
   nextSceneName: ClassroomLesson10 2
   defaultVector: {fileID: 217871989}
+  enableInteraction: 1
 --- !u!114 &428684200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4301,6 +4304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65756482631432522, guid: 7d255bce5b634604dbc1ed9f1e878f20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6411,7 +6418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vectorOne: {fileID: 279310709}
   vectorTwo: {fileID: 217871989}
-  material: {fileID: 2100000, guid: a562ffd4b316bfc42b9e096d2e801cf9, type: 2}
+  material: {fileID: 2100000, guid: 362ad5360d7f73a44a962b218c87d89f, type: 2}
 --- !u!4 &2109365779
 Transform:
   m_ObjectHideFlags: 0

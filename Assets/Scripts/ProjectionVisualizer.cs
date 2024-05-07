@@ -50,19 +50,22 @@ public class ProjectionVisualizer : MonoBehaviour
         Vector3 projection = Vector3.Project(vecTwo, vecOne);
 
         // rendering the triangle
-        if (vecTwo.y > 0) {
-            if (vecTwo.x < 0) {
-                vertices = new[] {projection * 2.5f, vecTwo * 2.5f, Vector3.zero};
-            } else {
-                vertices = new[] {vecTwo * 2.5f, projection * 2.5f, Vector3.zero};
-            }
-        } else {
-            if (vecTwo.x < 0) {
-                vertices = new[] {projection * 2.5f, Vector3.zero, vecTwo * 2.5f};
-            } else {
-                vertices = new[] {vecTwo * 2.5f, Vector3.zero, projection * 2.5f};
-            }
-        }    
+        // if (vecTwo.y > 0) {
+        //     if (vecTwo.x < 0) {
+        //         vertices = new[] {projection * 2.5f, vecTwo * 2.5f, Vector3.zero};
+        //     } else {
+        //         vertices = new[] {vecTwo * 2.5f, projection * 2.5f, Vector3.zero};
+        //     }
+        // } else {
+        //     if (vecTwo.x < 0) {
+        //         vertices = new[] {projection * 2.5f, Vector3.zero, vecTwo * 2.5f};
+        //     } else {
+        //         vertices = new[] {vecTwo * 2.5f, Vector3.zero, projection * 2.5f};
+        //     }
+        // }    
+        vertices = new[] {projection * 2.5f, vecTwo * 2.5f, Vector3.zero};
+
+        Debug.Log("vertex1: " + vertices[0] + "vertex2: " + vertices[1] + "vertex3: " + vertices[2]);
 
         // // get local coordinates of vectors
         // Vector3 localVecOne = transform.InverseTransformPoint(vecOne);

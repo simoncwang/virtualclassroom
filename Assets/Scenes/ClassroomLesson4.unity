@@ -2819,6 +2819,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1223111479565072043, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 362ad5360d7f73a44a962b218c87d89f, type: 2}
     - target: {fileID: 2015858944519543341, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2867,8 +2871,29 @@ PrefabInstance:
     - {fileID: 2015858944519543341, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6105445299686810446, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1292810871}
   m_SourcePrefab: {fileID: 100100000, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}
+--- !u!1 &1292810870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6105445299686810446, guid: 2d566cb7e19c18c4ab42221ce3ee94d5, type: 3}
+  m_PrefabInstance: {fileID: 1292810869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1292810871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292810870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb0a57fa5ce0d047aef00f9351bc3e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vector: {fileID: 2007109067}
 --- !u!1001 &1312664785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3737,6 +3762,7 @@ MonoBehaviour:
   defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
   nextSceneName: ClassroomLesson5
   defaultVector: {fileID: 2007109067}
+  enableInteraction: 1
 --- !u!114 &1571751996
 MonoBehaviour:
   m_ObjectHideFlags: 0

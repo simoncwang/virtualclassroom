@@ -907,6 +907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OVRManager: {fileID: 0}
+  PopUp: {fileID: 0}
 --- !u!114 &227837921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2294,6 +2295,7 @@ MonoBehaviour:
   defaultPointerMaterial: {fileID: 2100000, guid: 75cd4047e65798f469a5e98c2a768a7a, type: 2}
   nextSceneName: ClassroomLesson9 2
   defaultVector: {fileID: 1708808173}
+  enableInteraction: 1
 --- !u!114 &602527614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,7 +2443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vectorOne: {fileID: 227837918}
   vectorTwo: {fileID: 1708808173}
-  material: {fileID: 2100000, guid: a562ffd4b316bfc42b9e096d2e801cf9, type: 2}
+  material: {fileID: 2100000, guid: 362ad5360d7f73a44a962b218c87d89f, type: 2}
 --- !u!4 &622570759
 Transform:
   m_ObjectHideFlags: 0
@@ -5178,6 +5180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OVRManager: {fileID: 0}
+  PopUp: {fileID: 0}
 --- !u!114 &1708808176
 MonoBehaviour:
   m_ObjectHideFlags: 0

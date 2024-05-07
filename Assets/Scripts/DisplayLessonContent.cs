@@ -110,6 +110,9 @@ public class DrawText : MonoBehaviour
     // variables for updating text live
     private InfoUpdater infoScript;
 
+    // pop up game object
+    public GameObject PopUp;
+
     void Start()
     {
         // getting vector info updater script
@@ -373,5 +376,8 @@ public class DrawText : MonoBehaviour
         infoScript.enabled = true;
         OVRManager.GetComponent<ControllerManager>().enabled = true;
         OVRManager.GetComponent<LineRenderer>().enabled = true;
+
+        // show pop up
+        PopUp.SetActive(true);
     }
 }

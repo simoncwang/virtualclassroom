@@ -22,6 +22,8 @@ public class ControllerManager : MonoBehaviour
     private GameObject leftController;
     private GameObject rightController;
     private GameObject currentVector;
+
+    public bool enableInteraction;
     
     // Start is called before the first frame update
     void Start()
@@ -109,17 +111,22 @@ public class ControllerManager : MonoBehaviour
         Vector3 leftPosition = leftController.transform.position;
         Vector3 leftDirection = leftController.transform.forward;
 
-        if (rightIndexTriggerValue > 0f) {   // shoot laser from right hand and SCALE object hit  
-            ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "scale");
-        } else if (leftIndexTriggerValue > 0f) {   // shoot laser from left hand and SCALE object hit
-            ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "scale");
-        } else if (rightHandTriggerValue > 0f) {   // shoot laser from right hand and ROTATE object hit
-            ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "rotate");
-        } else if (leftHandTriggerValue > 0f) {   // shoot laser from left hand and ROTATE object hit
-            ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "rotate");
-        } else {   // if no trigger is pressed render default laser
+        if (enableInteraction) {
+            if (rightIndexTriggerValue > 0f) {   // shoot laser from right hand and SCALE object hit  
+                ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "scale");
+            } else if (leftIndexTriggerValue > 0f) {   // shoot laser from left hand and SCALE object hit
+                ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "scale");
+            } else if (rightHandTriggerValue > 0f) {   // shoot laser from right hand and ROTATE object hit
+                ShootLaserFromOrigin( rightPosition, rightDirection, laserMaxLength, "rotate");
+            } else if (leftHandTriggerValue > 0f) {   // shoot laser from left hand and ROTATE object hit
+                ShootLaserFromOrigin( leftPosition, leftDirection, laserMaxLength, "rotate");
+            } else {   // if no trigger is pressed render default laser
+                ShootLaserFromOrigin(rightPosition, rightDirection, laserMaxLength, "default");
+            }
+        } else {
             ShootLaserFromOrigin(rightPosition, rightDirection, laserMaxLength, "default");
         }
+        
     }
 
     void ShootLaserFromOrigin( Vector3 origin, Vector3 direction, float length, string operation)
@@ -156,10 +163,20 @@ public class ControllerManager : MonoBehaviour
                     rotateScript.rotateObject(currentVector, endPosition);
                 }
             } else if (operation == "default") {
-                if (hit.collider.gameObject.name.StartsWith("Arrow")) {
+                if (hit.collider.gameObject.name.StartsWith("Arrow") ) {
                     changeColor(laserLineRenderer, selectPointerMaterial);   // change to select color while hitting arrow
                     if (GetButtonPress()) {   // if button pressesd
                         ChangeScene();
+                    }
+                } else if (hit.collider.gameObject.name.StartsWith("ExitButton")) { 
+                    changeColor(laserLineRenderer, selectPointerMaterial);
+                    if (GetButtonPress()) {   // if button pressesd
+                        #if UNITY_STANDALONE
+                            Application.Quit();
+                        #endif
+                        #if UNITY_EDITOR
+                            UnityEditor.EditorApplication.isPlaying = false;
+                        #endif
                     }
                 } else {
                     changeColor(laserLineRenderer, defaultPointerMaterial);   // change back to default color
